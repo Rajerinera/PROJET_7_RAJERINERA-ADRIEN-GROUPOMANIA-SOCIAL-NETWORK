@@ -15,10 +15,25 @@
         Publiée par <b>{{ comment.author }}</b>
       </div>
       <div class="container mt-5">
-        <button v-on:click="showReact = !showReact" v-if="showReact">
+        <div class="optionButton">
+        <button 
+        class="btn btn-primary"
+        v-on:click="showReact = !showReact" v-if="showReact">
           Réagir à ce post
         </button>
-        <button>voir les react</button>
+        <button
+        class="btn btn-primary" 
+        v-on:click="AffichReact = !AffichReact" v-if="AffichReact">
+          voir les react
+        </button>
+         <button
+            class="btn btn-danger"
+            v-if="idcom == comment.idcom || user.admin == 1"
+            @click="deleteCom(comment)"
+          >
+            Supprimer votre post
+          </button>
+        </div>
         <div class="reaction" v-if="!showReact">
           <div class="row d-flex justify-content-center">
             <div class="col-md-8">
@@ -31,7 +46,7 @@
                       class="user-img rounded-circle mr-2"
                     />
                     <span
-                      ><small class="font-weight-bold text-primary">{{
+                      ><small class="font-weight-bold text-primary name">{{
                         user.first_name
                       }}</small>
                     </span>
@@ -56,8 +71,8 @@
                   "
                 >
                   <div class="reply px-4">
-                    <button @click.prevent="react(comment)">
-                      <small> Réagir </small> <span class="dots"></span>
+                    <button  class="btn btn-light btn-primary" @click.prevent="react(comment)" >
+                      <small> Réagir </small>
                     </button>
                   </div>
                 </div>
@@ -65,7 +80,7 @@
             </div>
           </div>
         </div>
-        <div class="row d-flex justify-content-center">
+        <div v-if="!AffichReact" class="row d-flex justify-content-center">
           <div class="col-md-8">
             <div class="card p-3">
               <div
@@ -89,28 +104,17 @@
                 </div>
                 <small>{{ react.postReact }} </small>
                 <button
-                  
+                   class="btn btn-danger"
                   v-if="iduserReact == react.iduserReact || user.admin == 1"
                   @click="deleteReact(react)"
                 >
-                  Supprimer {{react.idreact}}
+                  Supprimer
                 </button>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <ul class="list-unstyled list-inline media-detail pull-right">
-        <li>
-          <button
-            class="btn btn-danger"
-            v-if="idcom == comment.idcom || user.admin == 1"
-            @click="deleteCom(comment)"
-          >
-            Supprimer
-          </button>
-        </li>
-      </ul>
     </div>
   </div>
 </template>
@@ -132,6 +136,7 @@ export default {
       userReact: "",
       iduserReact: iduser1,
       showReact: true,
+      AffichReact: true,
       reacts: [],
     };
   },
@@ -247,6 +252,17 @@ export default {
 };
 </script>
 <style scoped>
+.optionButton{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+.name{
+  margin-right: 10px
+}
 #cadre {
   border: 1px solid black;
 }
@@ -292,7 +308,10 @@ h1 {
   margin-right: auto;
   margin-left: auto;
   width: 90%;
-  padding: 15px;
+  padding: 25px;
+  margin-top: 10px;
+  margin-bottom: 15px;
+  border: 5px solid black;
 }
 .content-item {
   padding: 30px 0;
