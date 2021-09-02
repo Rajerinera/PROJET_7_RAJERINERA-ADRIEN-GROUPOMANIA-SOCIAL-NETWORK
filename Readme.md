@@ -2,7 +2,7 @@
 
 	Lien vers les Github de mes projets :
 
-			https://github.com/Rajerinera/Projet_7_-RAJERINERA-ADRIEN.git
+			https://github.com/Rajerinera/PROJET_7_RAJERINERA-ADRIEN-GROUPOMANIA-SOCIAL-NETWORK
 
 	Installation du projet  :
 
