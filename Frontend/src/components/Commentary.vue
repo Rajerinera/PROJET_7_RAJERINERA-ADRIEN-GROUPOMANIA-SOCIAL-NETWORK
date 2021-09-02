@@ -16,17 +16,21 @@
       </div>
       <div class="container mt-5">
         <div class="optionButton">
-        <button 
-        class="btn btn-primary"
-        v-on:click="showReact = !showReact" v-if="showReact">
-          Réagir à ce post
-        </button>
-        <button
-        class="btn btn-primary" 
-        v-on:click="AffichReact = !AffichReact" v-if="AffichReact">
-          voir les react
-        </button>
-         <button
+          <button
+            class="btn btn-primary"
+            v-on:click="showReact = !showReact"
+            v-if="showReact"
+          >
+            Réagir à ce post
+          </button>
+          <button
+            class="btn btn-primary"
+            v-on:click="AffichReact = !AffichReact"
+            v-if="AffichReact"
+          >
+            voir les react
+          </button>
+          <button
             class="btn btn-danger"
             v-if="idcom == comment.idcom || user.admin == 1"
             @click="deleteCom(comment)"
@@ -71,7 +75,10 @@
                   "
                 >
                   <div class="reply px-4">
-                    <button  class="btn btn-light btn-primary" @click.prevent="react(comment)" >
+                    <button
+                      class="btn btn-light btn-primary"
+                      @click.prevent="react(comment)"
+                    >
                       <small> Réagir </small>
                     </button>
                   </div>
@@ -104,7 +111,7 @@
                 </div>
                 <small>{{ react.postReact }} </small>
                 <button
-                   class="btn btn-danger"
+                  class="btn btn-danger"
                   v-if="iduserReact == react.iduserReact || user.admin == 1"
                   @click="deleteReact(react)"
                 >
@@ -162,7 +169,7 @@ export default {
       //partie user
       this.$store.dispatch("getInfo"),
       // partie react
-    this.reacts = [];
+      (this.reacts = []);
     axios
       .get("http://localhost:3000/api/reacts", {
         headers: {
@@ -233,9 +240,9 @@ export default {
     deleteReact: function (react) {
       const deleteReact = window.confirm("Etes vous sûr?");
       if (deleteReact == true) {
-        const reactSupp = react.idreact
+        const reactSupp = react.idreact;
         axios
-          .delete("http://localhost:3000/react/"+ reactSupp, {
+          .delete("http://localhost:3000/react/" + reactSupp, {
             headers: {
               Authorization: "Bearer " + localStorage.getItem("userToken"),
             },
@@ -243,7 +250,7 @@ export default {
           .then(() => {
             console.log();
             console.log("supprimer fait");
-            location.reload()
+            location.reload();
           })
           .catch((error) => console.log(error));
       }
@@ -252,7 +259,7 @@ export default {
 };
 </script>
 <style scoped>
-.optionButton{
+.optionButton {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -260,8 +267,8 @@ export default {
   margin-right: auto;
   width: 50%;
 }
-.name{
-  margin-right: 10px
+.name {
+  margin-right: 10px;
 }
 #cadre {
   border: 1px solid black;

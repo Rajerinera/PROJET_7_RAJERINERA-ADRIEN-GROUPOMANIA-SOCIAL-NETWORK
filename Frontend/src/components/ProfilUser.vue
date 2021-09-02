@@ -115,8 +115,8 @@ export default {
         )
         .then((response) => console.log("success", response), location.reload())
         .catch((error) => console.log(error));
-    }, 
-  }
+    },
+  },
 };
 </script>
 <style scoped>
