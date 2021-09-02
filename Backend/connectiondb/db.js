@@ -22,6 +22,7 @@ pool.query(sqlUser, (err, result, field) => {
   return console.log(result);
 })
 
+// Pour travailler sur la table "comment" de notre base de donnée
 let sqlComment = 'SELECT * FROM comment';
 pool.query(sqlComment, (err, result, field) => {
   if (err) {
@@ -30,7 +31,7 @@ pool.query(sqlComment, (err, result, field) => {
   return console.log(result)
 })
 
-
+// Pour travailler sur la table "reaction" de notre base de donnée
 let sqlReact = 'SELECT * FROM react';
 pool.query(sqlReact, (err, result, field) => {
   if (err) {

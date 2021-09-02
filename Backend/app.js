@@ -1,14 +1,14 @@
 const express = require("express"); //application qui permet le routing de notre backend
 require('dotenv').config(); //afin de sécuriser les données sur notre éditeur de code
-const cors = require('cors')
-const cookieSession = require('cookie-session')
-const helmet = require("helmet");
-const nocache = require("nocache")
-const path = require("path");
+const cors = require('cors') //afin d'acceder aux headers de notre application
+const cookieSession = require('cookie-session') // sécuriser les headers de notre application
+const helmet = require("helmet"); // sécuriser notre application
+const nocache = require("nocache") // sécuriser les caches de notre application
+const path = require("path"); // afin de mettre en oeuvre les images de notre application
 const loginRoutes = require ("./routes/login") //récuperer le path de login
 const userRoutes = require("./routes/user") //récuperer le path de user
-const commentRoutes = require("./routes/comment");
-const reactRoutes = require("./routes/react");
+const commentRoutes = require("./routes/comment"); // récuperer le path de comment
+const reactRoutes = require("./routes/react"); // récuperer le path de react
 
 const app = express();
 app.use(helmet());

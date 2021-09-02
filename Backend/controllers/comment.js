@@ -1,7 +1,9 @@
 const { createComment, AllComment, getCommentById, updateComment, deleteComment } = require("../service/comment");
 const fs = require('fs');
 
+
 module.exports = {
+    // creation d'un commentaire envoyé dans la base de donnée
     createComment: (req, res) => {
         if (!req.body.image) {
             req.body.image = req.file
@@ -28,6 +30,7 @@ module.exports = {
         }) 
     },
 
+    // Permet de récupérer les données dans la base de donnée
     AllComment: (req, res) => {
         AllComment((err, results) => {
             if (err) {
@@ -38,6 +41,7 @@ module.exports = {
         });
     },
 
+    // Permet de récuperer une données précise
     getCommentById: (req, res) => {
         getCommentById(req.params.commentId, (err, rows) => { 
             if (err) {
@@ -49,6 +53,7 @@ module.exports = {
         })
     },
  
+    //modifier les données dans la base de donnée
     updateComment: (req, res) => {
         if (!req.body.image) {
             req.body.image = req.file
@@ -72,6 +77,7 @@ module.exports = {
         })
     },
 
+    // Supprimer dans la base de donnée
     deleteComment: (req, res) => {
         const test = req.params.commentId
         deleteComment(test, (err, results) => {

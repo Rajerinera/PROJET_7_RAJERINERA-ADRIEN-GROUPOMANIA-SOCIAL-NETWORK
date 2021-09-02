@@ -12,6 +12,7 @@ const emailMaskOptions = {
   };
 
 module.exports = {
+    //Se connecter dans la base de donnée
     signup:(req, res) =>{
         const body = req.body;
         const salt = genSaltSync(10);
@@ -31,6 +32,7 @@ module.exports = {
             });
         })
     },
+    // Se connecter sur le site
     login:(req, res) =>{
         const email = maskData.maskEmail2(req.body.email, emailMaskOptions);
         const password = req.body.password;

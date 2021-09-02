@@ -2,6 +2,7 @@ const { genSaltSync, hashSync } = require("bcrypt");
 const { getUsers, getUsersById, updateUser, deleteUser } = require("../service/user");
 
 module.exports = {
+    // récuperer un user précis dans la base de donnée
     getUsersById: (req, res) => {
         getUsersById(req.params.id, (err, rows) => {
             if (err) {
@@ -13,6 +14,7 @@ module.exports = {
         })
 
     },
+    // récuperer toute les données dans la base de donnée
     getUsers: (req, res) => {
         getUsers((err, results) => {
             if (err) {
@@ -25,6 +27,8 @@ module.exports = {
             });
         });
     },
+
+    // Modifier les données user dans la base de données
     updateUser: (req, res) => {
         if (!req.body) {
             res.status(400).send({
@@ -42,6 +46,8 @@ module.exports = {
             })
         })
     },
+
+    // Supprimer un élément dans la base de donnée
     deleteUser: (req, res) => {
         deleteUser(req.params.id, (err, results) => {
             if (err) {

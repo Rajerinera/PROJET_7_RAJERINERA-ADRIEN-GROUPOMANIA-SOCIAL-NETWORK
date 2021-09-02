@@ -1,3 +1,5 @@
+// Permet de verifier si le frontend à l'autorisation d'acceder à notre backend
+
 const jwt = require('jsonwebtoken');
 
 module.exports = (req, res, next) => {
